@@ -31,35 +31,37 @@ async function main(items) {
 
     switch (categories) {
 
-        case "show": 
-            console.clear();
-
-            clack.intro(color.bold(color.blue("Annyeonghaseyo, This is My To-Do List")));
-            console.log(color.cyan("Show your to-do list\n"));
-
-            items.forEach((item, index) => {
-                console.log(`${index + 1}. ${color.bold(color.blue(item.Title))}: ${color.bgBlue(item.Description)}\n`)
-            });
-
-
+        case "show":
+            console.clear()
+        
+            clack.intro(color.bold(color.blue("Annyeonghaseyo, This is My To-Do List")))
+            console.log(color.cyan("Show your to-do list\n"))
+        
+            if (items.length === 0) {
+                console.log(color.red("You don't have any remaining to do\n"))
+            } else {
+                items.forEach((item, index) => {
+                    console.log(`${index + 1}. ${color.bold(color.blue(item.Title))}: ${color.bgBlue(item.Description)}\n`)
+                });
+            }
+        
             let option = await clack.select({
                 message: color.cyan("Back to the category?"),
                 options: [
-                    {value: "back", label: "Back to the category"},
-                    {value: "quit", label: "Quit from app"}
+                    { value: "back", label: "Back to the category" },
+                    { value: "quit", label: "Quit from app" }
                 ]
             });
-
+        
             if (option === "back") {
                 main(items);
             } else if (option === "quit") {
                 console.log("Successfully Quitted")
             }
+        
+        break;
 
-            break;
-
-
-
+            
 
 
 
@@ -145,4 +147,3 @@ async function main(items) {
 }
 
 main(toDoItems);
-
