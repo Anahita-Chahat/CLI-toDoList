@@ -35,14 +35,14 @@ async function main(items) {
             console.clear()
         
             clack.intro(color.bold(color.blue("Annyeonghaseyo, This is My To-Do List")))
-            console.log(color.cyan("Show your to-do list\n"))
+            console.log(color.cyan("The To-Do List\n"))
         
             if (items.length === 0) {
                 console.log(color.red("You don't have any remaining to do\n"))
             } else {
                 items.forEach((item, index) => {
                     console.log(`${index + 1}. ${color.bold(color.blue(item.Title))}: ${color.bgBlue(item.Description)}\n`)
-                });
+                }); 
             }
         
             let option = await clack.select({
